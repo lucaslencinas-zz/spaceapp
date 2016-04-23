@@ -141,24 +141,16 @@
           //$("#resultado").text("longitud: " + $longitud.val() + ", latitud: " + $latitud.val());
           console.log("Get a la api: " +  url + $latitud.val() + "," + $longitud.val());
 
-  /*
           $.ajax({
-            type: 'GET',
-            url: url + $latitud.val() + "," + $longitud.val(),
-            xhrFields: {
-              withCredentials: false
-            },
-            headers: {
-              // Set any custom headers here.
-              // If you set any non-simple headers, your server must include these
-              // headers in the 'Access-Control-Allow-Headers' response header.
-            },
-          });
-  */
-          $.get( url + $latitud.val() + "," + $longitud.val() , function( data ) {
-            $( "#resultado" ).html( data );
-          });
+              crossDomain: true,
+              type:"GET",
+              contentType: "application/json; charset=utf-8",
+              url: url + $latitud.val() + "," + $longitud.val(),
+              dataType: "jsonp",
+              success: function(data) {$( "#resultado" ).html( data );},
+              error: function() { alert('Failed!'); },
 
+          });
         });
       });
 
