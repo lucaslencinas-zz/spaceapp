@@ -52,9 +52,8 @@
                       <div class="col-lg-12">
                         <div class="col-lg-7">
                           <h1 class="page-header">
-                              Pedidos a la API de Forecast
+                              pagina principal
                           </h1>
-                          Ejemplo de Pedido: https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE
                         </div>
                       </div>
                   </div>
@@ -64,44 +63,7 @@
                     <div class="panel panel-default">
                       <div class="panel-body">
                         <div class="col-lg-8">
-                          <div class="form-horizontal" action="index.html" method="post">
-                            <div class="form-group">
-                              <label for="textLatitud" class="col-sm-4 control-label input-sm">Latitud: </label>
-                              <div class="col-sm-8">
-                                <input id="latitud" class="form-control input-sm" name="textLatitud">
-                              </input>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="textLongitud" class="col-sm-4 control-label input-sm">Longitud: </label>
-                              <div class="col-sm-8">
-                                <input id="longitud" class="form-control input-sm" name="textLongitud">
-                              </input>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <div class="col-sm-offset-4 col-sm-8">
-                                <button id="buscarButton" type="submit" name="Submit" class="btn btn-success btn-sm">Buscar Datos</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.row -->
-
-                  <div class="row">
-                    <div class="panel panel-default">
-                      <div class="panel-body">
-                        <div class="col-lg-8">
-                          <h4>Resultados:</h4>
-                          <div class="" id="resultado">
-                            <ul>
-                              <li>asd</li>
-                              <li>asd</li>
-                            </ul>
-                          </div>
+                          asdasd
                         </div>
                       </div>
                     </div>
@@ -128,33 +90,6 @@
 
     <script type="text/javascript">
 
-    /*latlng de ejemplo 37.8267,-122.423*/
-    var apikey = "c9670c8f1494ec60966afc52015cd8ca";
-    var url = "https://api.forecast.io/forecast/c9670c8f1494ec60966afc52015cd8ca/"; /*LATITUDE,LONGITUDE*/
-
-      $(function(){ /*cuando se carga la pagina*/
-        var $longitud = $("#longitud");
-        var $latitud = $("#latitud");
-        $longitud.val("-122.423");
-        $latitud.val("37.8267");
-        $("#buscarButton").click(function(){
-          //$("#resultado").text("longitud: " + $longitud.val() + ", latitud: " + $latitud.val());
-          console.log("Get a la api: " +  url + $latitud.val() + "," + $longitud.val());
-
-          $.ajax({
-              crossDomain: true,
-              type:"GET",
-              contentType: "application/json; charset=utf-8",
-              url: url + $latitud.val() + "," + $longitud.val(),
-              dataType: "jsonp",
-              success: function(data) {
-                $( "#resultado" ).text( data );
-              },
-              error: function() { alert('Failed!'); },
-
-          });
-        });
-      });
 
     </script>
 
