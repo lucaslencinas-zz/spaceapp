@@ -167,13 +167,13 @@
                   resultadoGET += "<li>summary : " + data.currently.summary + "</li>";
 
                   resultadoGET += "<li>Dias: <ul>";
-                  data.daily.data.forEach(function(element, index, array) {
-                    resultadoGET += "<li>Dia " +  index + " :" + "<ul>";
-                    for(var key in element) {
-                      resultadoGET += "<li>" + key + " : " + element[key] + "</li>";
+                  for (var i = 0; i < 4; i++){
+                    resultadoGET += "<li>Dia " +  i + " :" + "<ul>";
+                    for(var key in data.daily.data[i]) {
+                      resultadoGET += "<li>" + key + " : " + data.daily.data[i][key] + "</li>";
                     }
                     resultadoGET += "</ul></li>";
-                  });
+                  };
                   resultadoGET += "</ul></li>";
 
 
@@ -189,13 +189,13 @@
                   resultadoGET += "<li>summary : " + data.hourly.summary + "</li>";
 
                   resultadoGET += "<li>Horas: <ul>";
-                  data.hourly.data.forEach(function(element, index, array) {
-                    resultadoGET += "<li>Hora " +  index + " :" + "<ul>";
-                    for(var key in element) {
-                      resultadoGET += "<li>" + key + " : " + element[key] + "</li>";
+                  for (var i = 0; i < 4; i++){
+                    resultadoGET += "<li>Hora " +  i + " :" + "<ul>";
+                    for(var key in data.hourly.data[i]) {
+                      resultadoGET += "<li>" + key + " : " + data.hourly.data[i][key] + "</li>";
                     }
                     resultadoGET += "</ul></li>";
-                  });
+                  };
                   resultadoGET += "</ul></li>";
 
 
@@ -205,13 +205,13 @@
                   resultadoGET += "<li>summary : " + data.minutely.summary + "</li>";
 
                   resultadoGET += "<li>Minutos: <ul>";
-                  data.minutely.data.forEach(function(element, index, array) {
-                    resultadoGET += "<li>Minuto " +  index + " :" + "<ul>";
-                    for(var key in element) {
-                      resultadoGET += "<li>" + key + " : " + element[key] + "</li>";
+                  for (var i = 0; i < 4; i++){
+                    resultadoGET += "<li>Minuto " +  i + " :" + "<ul>";
+                    for(var key in data.minutely.data[i]) {
+                      resultadoGET += "<li>" + key + " : " + data.minutely.data[i][key] + "</li>";
                     }
                     resultadoGET += "</ul></li>";
-                  });
+                  };
                   resultadoGET += "</ul></li>";
 
 
