@@ -97,10 +97,7 @@
                         <div class="col-lg-8">
                           <h4>Resultados:</h4>
                           <div class="" id="resultado">
-                            <ul>
-                              <li>asd</li>
-                              <li>asd</li>
-                            </ul>
+                            <ul></ul>
                           </div>
                         </div>
                       </div>
@@ -128,40 +125,105 @@
 
     <script type="text/javascript">
 
-    /*latlng de ejemplo 37.8267,-122.423*/
-    var apikey = "c9670c8f1494ec60966afc52015cd8ca";
-    var url = "https://api.forecast.io/forecast/c9670c8f1494ec60966afc52015cd8ca/"; /*LATITUDE,LONGITUDE*/
 
-      $(function(){ /*cuando se carga la pagina*/
-        var $longitud = $("#longitud");
-        var $latitud = $("#latitud");
-        $longitud.val("-122.423");
-        $latitud.val("37.8267");
-        $("#buscarButton").click(function(){
-          //$("#resultado").text("longitud: " + $longitud.val() + ", latitud: " + $latitud.val());
-          console.log("Get a la api: " +  url + $latitud.val() + "," + $longitud.val());
+      /*latlng de ejemplo 37.8267,-122.423*/
+      var apikey = "c9670c8f1494ec60966afc52015cd8ca";
+      var url = "https://api.forecast.io/forecast/c9670c8f1494ec60966afc52015cd8ca/"; /*LATITUDE,LONGITUDE*/
 
-  /*
-          $.ajax({
-            type: 'GET',
-            url: url + $latitud.val() + "," + $longitud.val(),
-            xhrFields: {
-              withCredentials: false
-            },
-            headers: {
-              // Set any custom headers here.
-              // If you set any non-simple headers, your server must include these
-              // headers in the 'Access-Control-Allow-Headers' response header.
-            },
+        $(function(){ /*cuando se carga la pagina*/
+          var $longitud = $("#longitud");
+          var $latitud = $("#latitud");
+
+          $longitud.val("-122.423");
+          $latitud.val("37.8267");
+          $("#buscarButton").click(function(){
+            //$("#resultado").text("longitud: " + $longitud.val() + ", latitud: " + $latitud.val());
+            console.log("Get a la api: " +  url + $latitud.val() + "," + $longitud.val());
+
+            $.ajax({
+                crossDomain: true,
+                type:"GET",
+                contentType: "application/json; charset=utf-8",
+                url: url + $latitud.val() + "," + $longitud.val(),
+                dataType: "jsonp",
+                success: function(data) {
+                  var resultadoGET = "";
+
+                  resultadoGET += "<li>Latitude: " + data.latitude + "</li>";
+                  resultadoGET += "<li>Longitude: " + data.longitude + "</li>";
+                  resultadoGET += "<li>Offset: " + data.offset + "</li>";
+                  resultadoGET += "<li>Timezone: " + data.timezone + "</li>";
+
+                  resultadoGET += "<li>Currently<ul>";
+                  for(var key in data.currently) {
+                    resultadoGET += "<li>" key + " : " + data.currently[key] + "</li>";
+                  }
+                  resultadoGET += "</ul></li>";
+
+
+
+                  resultadoGET = "<li>Daily<ul>";
+                  resultadoGET += "<li>icon : " + data.currently.icon + "</li>";
+                  resultadoGET += "<li>summary : " + data.currently.summary + "</li>";
+
+                  resultadoGET = "<li>Dias: <ul>";
+                  data.daily.data.forEach(function(element, index, array) {
+                    resultadoGET += "<li>Dia " index + " :" + "<ul>";
+                    for(var key in element) {
+                      resultadoGET += "<li>" key + " : " + element[key] + "</li>";
+                    }
+                    resultadoGET += "</ul></li>";
+                  });
+                  resultadoGET += "</ul></li>";
+
+
+                  resultadoGET += "<li>Flags: <ul>";
+                  for(var key in data.flags) {
+                    resultadoGET += "<li>" key + " : " + data.flags[key] + "</li>";
+                  }
+                  resultadoGET += "</ul></li>";
+
+
+                  resultadoGET = "<li>Hourly<ul>";
+                  resultadoGET += "<li>icon : " + data.hourly.icon + "</li>";
+                  resultadoGET += "<li>summary : " + data.hourly.summary + "</li>";
+
+                  resultadoGET = "<li>Horas: <ul>";
+                  data.hourly.data.forEach(function(element, index, array) {
+                    resultadoGET += "<li>Hora " index + " :" + "<ul>";
+                    for(var key in element) {
+                      resultadoGET += "<li>" key + " : " + element[key] + "</li>";
+                    }
+                    resultadoGET += "</ul></li>";
+                  });
+                  resultadoGET += "</ul></li>";
+
+
+
+                  resultadoGET = "<li>Minutely<ul>";
+                  resultadoGET += "<li>icon : " + data.minutely.icon + "</li>";
+                  resultadoGET += "<li>summary : " + data.minutely.summary + "</li>";
+
+                  resultadoGET = "<li>Minutos: <ul>";
+                  data.minutely.data.forEach(function(element, index, array) {
+                    resultadoGET += "<li>Minuto " index + " :" + "<ul>";
+                    for(var key in element) {
+                      resultadoGET += "<li>" key + " : " + element[key] + "</li>";
+                    }
+                    resultadoGET += "</ul></li>";
+                  });
+                  resultadoGET += "</ul></li>";
+
+
+
+
+                  $( "#resultado > ul" ).append( resultadoGET );
+                },
+                error: function() { alert('Failed!'); },
+
+            });
           });
-  */
-          $.get( url + $latitud.val() + "," + $longitud.val() , function( data ) {
-            $( "#resultado" ).html( data );
-          });
-
         });
-      });
-
     </script>
 
 
