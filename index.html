@@ -53,15 +53,13 @@
     <h2 class="fs-title">Flight date and time</h2>
     <h3 class="fs-subtitle">Select the time of your flight</h3>
     <!-- Time Picker -->
-    <div class="swipe" id="DP-date">
+  <div class="swipe" id="DP-date">
       <div class='swipe-wrap'>
 
       </div>
     </div>
-
-    <div class="picker-container"></div>
-
-    <!-- Fin Time Picker  -->
+  <div class="picker-container"></div>
+  <!-- Fin Time Picker  -->
 
     <input type="button" name="previous" class="previous action-button" value="Previous" />
     <input type="button" name="next" id="search" class="next action-button" value="Search" />
@@ -97,10 +95,10 @@
         });
 
         $("#search").click(function(){
-          console.log("Fecha: " + formatearFecha($(".swipe-wrap > .active").text()));
-          console.log("Hora: " + formatearHora($(".kitkat-minute").text(), $(".kitkat-hour").text()));
-          console.log("Aeropuerto desde:" + $("#selectAeropuertoDesde").find('option:selected').attr("name"));
-          console.log("Aeropuerto hasta:" + $("#selectAeropuertoHasta").find('option:selected').attr("name"));
+          console.log("date: " + formatearFecha($(".swipe-wrap > .active").text()));
+          console.log("hour: " + formatearHora($(".kitkat-minute").text(), $(".kitkat-hour").text()));
+          console.log("origin:" + $("#selectAeropuertoDesde").find('option:selected').attr("name"));
+          console.log("destiny:" + $("#selectAeropuertoHasta").find('option:selected').attr("name"));
           $.ajax({
               crossDomain: true,
               type:"GET",
