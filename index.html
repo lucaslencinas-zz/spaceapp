@@ -147,7 +147,9 @@
               contentType: "application/json; charset=utf-8",
               url: url + $latitud.val() + "," + $longitud.val(),
               dataType: "jsonp",
-              success: function(data) {$( "#resultado" ).html( data );},
+              success: function(data) {
+                $( "#resultado" ).text( data );
+              },
               error: function() { alert('Failed!'); },
 
           });
