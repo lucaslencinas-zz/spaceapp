@@ -166,7 +166,7 @@
                   resultadoGET += "<li>icon : " + data.currently.icon + "</li>";
                   resultadoGET += "<li>summary : " + data.currently.summary + "</li>";
 
-                  resultadoGET = "<li>Dias: <ul>";
+                  resultadoGET += "<li>Dias: <ul>";
                   data.daily.data.forEach(function(element, index, array) {
                     resultadoGET += "<li>Dia " +  index + " :" + "<ul>";
                     for(var key in element) {
@@ -184,11 +184,11 @@
                   resultadoGET += "</ul></li>";
 
 
-                  resultadoGET = "<li>Hourly<ul>";
+                  resultadoGET += "<li>Hourly<ul>";
                   resultadoGET += "<li>icon : " + data.hourly.icon + "</li>";
                   resultadoGET += "<li>summary : " + data.hourly.summary + "</li>";
 
-                  resultadoGET = "<li>Horas: <ul>";
+                  resultadoGET += "<li>Horas: <ul>";
                   data.hourly.data.forEach(function(element, index, array) {
                     resultadoGET += "<li>Hora " +  index + " :" + "<ul>";
                     for(var key in element) {
@@ -200,11 +200,11 @@
 
 
 
-                  resultadoGET = "<li>Minutely<ul>";
+                  resultadoGET += "<li>Minutely<ul>";
                   resultadoGET += "<li>icon : " + data.minutely.icon + "</li>";
                   resultadoGET += "<li>summary : " + data.minutely.summary + "</li>";
 
-                  resultadoGET = "<li>Minutos: <ul>";
+                  resultadoGET += "<li>Minutos: <ul>";
                   data.minutely.data.forEach(function(element, index, array) {
                     resultadoGET += "<li>Minuto " +  index + " :" + "<ul>";
                     for(var key in element) {
