@@ -104,7 +104,7 @@
         }
         for (var i=0;i<12;i++){
             var radian=Math.PI/2 + (i*Math.PI/6);
-            var x=.5-(0.78*Math.cos(radian)/2);
+            var x=0.5-(0.78*Math.cos(radian)/2);
             var y=0.5-(0.78*Math.sin(radian)/2);
             var tmp=$("<div>").html(i*5).css({
                 position:"absolute",
@@ -370,7 +370,7 @@ $(function(){
 
    var mc = new Hammer($('#DP-date').get(0));
   mc.get('pan').set({ direction: Hammer.DIRECTION_HORIZONTAL });
-
+/*
   mc.on("panleft panright panend", function(ev) {
     if(ev.type == "panleft"){
 
@@ -389,7 +389,7 @@ $(function(){
        console.log(ev.distance)
     }
 
-});
+});*/
 
   function MoveLeft(){
     var nxtd = lastDate.add(1, 'd');
