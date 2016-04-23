@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="codepen-steps/css/style.css">
     <link rel="stylesheet" href="styleTimepicker.css">
 
-    <script src="codepen-steps/js/jquery.js"></script>
+    <script src="js/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.4/hammer.min.js"></script>
     <script  src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js" ></script>
 
@@ -70,9 +70,9 @@
     <h2 class="fs-title">Results</h2>
     <h3 class="fs-subtitle">Your flight forecast is...</h3>
 
-    <span  class="fs-title">Probability of delay: </span><br><span class="fs-subtitle" id="probabilityOfDelay"> High</span><br>
-    <span  class="fs-title">Delayed Airport: </span><br><span class="fs-subtitle" id="delayedAirport"> asdasdasdad</span><br>
-    <span  class="fs-title">Reasons of Delay: </span><br><span class="fs-subtitle" id="reasonsOfDelay">asdadsdsadsaasdasd</span><br>
+    <span  class="fs-title">Probability of delay: </span><br><span class="fs-subtitle" id="probabilityOfDelay"></span><br><br>
+    <span  class="fs-title">Delayed Airport: </span><br><span class="fs-subtitle" id="delayedAirport"></span><br><br>
+    <span  class="fs-title">Reasons of Delay: </span><br><span class="fs-subtitle" id="reasonsOfDelay"></span><br><br>
     <input type="button" name="previous" class="previous action-button" value="Modify" />
     <input type="submit" name="submit" class="submit action-button" value="New Flight" />
   </fieldset>
@@ -87,6 +87,7 @@
   </style>
 
   <script type="text/javascript">
+      var probabilidad = ["UNLIKELY", "LOW", "MEDIUM", "HIGH", "VERY HIGH"];
       var apiurl = "http://private-e158e-clearfortakeoff.apiary-mock.com/probability"
       var meses = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dic"];
       $(function() {
@@ -143,9 +144,15 @@
       }
 
       function renderResponse(data){
-        data.probability,
-        data.source,
-        data.reasons
+        var lugar = "";
+        $("#probabilityOfDelay").text(probabilidad[data.probability -1]);
+        if(data.source == "origin"){
+          $("#delayedAirport").text($("#selectAeropuertoDesde").find('option:selected').text());
+        }
+        else {
+          $("#delayedAirport").text($("#selectAeropuertoHasta").find('option:selected').text());
+        }
+        $("#reasonsOfDelay").text(data.reasons);
       }
 
   </script>
