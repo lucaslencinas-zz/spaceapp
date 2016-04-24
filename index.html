@@ -2,7 +2,7 @@
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Multi Step Form with Progress Bar using jQuery and CSS3</title>
+    <title>GOT a flight</title>
 
 
     <link rel="stylesheet" href="codepen-steps/css/reset.css">
@@ -68,7 +68,7 @@
     <h2 class="fs-title">Results</h2>
     <h3 class="fs-subtitle">Your flight forecast is...</h3>
 
-    <span  class="fs-title">Probability of delay: </span><br><span class="fs-subtitle" id="probabilityOfDelay"></span><br><br>
+    <span class="fs-title">Probability of delay: </span><br><span class="fs-subtitle" id="probabilityOfDelay"></span><br>
     <span  class="fs-title">Delayed Airport: </span><br><span class="fs-subtitle" id="delayedAirport"></span><br><br>
     <span  class="fs-title">Reasons of Delay: </span><br><span class="fs-subtitle" id="reasonsOfDelay"></span><br><br>
     <input type="button" name="previous" class="previous action-button" value="Modify" />
@@ -145,6 +145,7 @@
       function renderResponse(data){
         var lugar = "";
         $("#probabilityOfDelay").text(probabilidad[data.probability -1]);
+        $("#probabilityOfDelay").addClass("probability" + data.probability);
         if(data.source == "origin"){
           $("#delayedAirport").text($("#selectAeropuertoDesde").find('option:selected').text());
         }
@@ -153,7 +154,6 @@
         }
         $("#reasonsOfDelay").text(data.reasons);
       }
-
   </script>
   </body>
 </html>
