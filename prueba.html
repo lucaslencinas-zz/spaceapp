@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="codepen-steps/css/reset.css">
   <link rel="stylesheet" href="codepen-steps/css/style.css">
   <link rel="stylesheet" href="styleTimepicker.css">
-  <link rel="icon" type="image/ico" href="favicon.ico">
 
   <script src="js/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.4/hammer.min.js"></script>
@@ -69,10 +68,10 @@
       <h2 class="fs-title">Prediction</h2>
       <h3 class="fs-subtitle">Your flight forecast is...</h3>
 
-      <h4 id="titleDelay" class="fs-title">Probability of delay</h4><span class="fs-subtitle" id="probabilityOfDelay"></span><br>
-      <h4  class="fs-title">Reasons</h4><span class="fs-subtitle" id="reasonsOfDelay"></span><br><br>
-      <input type="button" name="insurance" id="insuranceBtn" class="insurance action-button" value="Buy insurance" />
-      <input type="button" name="submit" id="newFligthBtn" class="submit action-button" value="New flight" />
+      <span class="fs-title">Probability of delay</span><br><span class="fs-subtitle" id="probabilityOfDelay"></span><br>
+      <span  class="fs-title">Reasons</span><br><span class="fs-subtitle" id="reasonsOfDelay"></span><br><br>
+      <input type="button" name="insurance" class="insurance action-button" value="Buy insurance" />
+      <input type="button" name="submit" class="submit action-button" value="New flight" />
     </fieldset>
   </form>
 
@@ -89,11 +88,6 @@
         $(".swipe-wrap > .active").toggleClass("active");
         $( this ).toggleClass( "active" );
       });
-
-      $("#selectAeropuertoHasta option[name='KORD']").prop('selected', true);
-      $("#insuranceBtn").css ("width", "110px");
-      $("#insuranceBtn").css("background", "#f44336");
-      $("#titleDelay").css ("margin-top", "30px");
 
       $("#search").click(function(){
         var hora = $(".kitkat-am-pm").text() == "PM" ? 12 + +$(".kitkat-hour").text() : $(".kitkat-hour").text();

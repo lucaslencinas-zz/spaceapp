@@ -83,6 +83,12 @@ body {
 	color: #666;
 	margin-bottom: 20px;
 }
+
+h4 fs-title{
+	margin-top: 30px;
+	margin-bottom: 0px;
+}
+
 /*progressbar*/
 #progressbar {
 	margin-bottom: 30px;
@@ -139,6 +145,8 @@ body {
   margin: 10px 0;
   display: inline-block;
   border-radius: 16px;
+	margin-top: 0;
+  margin-bottom: 20px;
 }
 
 .probability1 {
