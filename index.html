@@ -106,8 +106,9 @@
           error = true;
         }
         if(error){
-
+          event.stopPropagation();
         }
+
 
       });
 
@@ -119,6 +120,8 @@
         console.log("hour: " + formatearHora($(".kitkat-minute").text(), hora));
         console.log("origin:" + $("#selectAeropuertoDesde").find('option:selected').attr("name"));
         console.log("destiny:" + $("#selectAeropuertoHasta").find('option:selected').attr("name"));
+
+        setTimeout(function(){
         $.ajax({
             crossDomain: true,
             type:"GET",
@@ -130,7 +133,8 @@
               renderResponse(data);
             },
             error: function() { alert('Failed!'); },
-        }); /*end ajax*/
+        })} /*end ajax*/
+        , 1500);
       });/*end search click*/
     });
 
