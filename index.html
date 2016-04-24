@@ -80,8 +80,8 @@
   <script src="indexTimepicker.js"></script>
   <script type="text/javascript">
     var probabilidad = ["UNLIKELY", "LOW", "MEDIUM", "HIGH", "VERY HIGH"];
-    var apiurl = "http://private-e158e-clearfortakeoff.apiary-mock.com/probability"
-    /*var apiurl = "http://prudi.mybluemix.net/api/v1/weathers/probability?";*/
+    /*var apiurl = "http://private-e158e-clearfortakeoff.apiary-mock.com/probability"*/
+    var apiurl = "http://prudi.mybluemix.net/api/v1/weathers/probability?";
     /*origin=KORD&destiny=KEWR&date=20160424&hour=2325*/
     var meses = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dic"];
     $(function() {
@@ -115,18 +115,21 @@
 
       $("#search").click(function(){
         var hora = $(".kitkat-am-pm").text() == "PM" ? 12 + +$(".kitkat-hour").text() : $(".kitkat-hour").text();
-
-        console.log("date: " + formatearFecha($(".swipe-wrap > .active").text()));
-        console.log("hour: " + formatearHora($(".kitkat-minute").text(), hora));
-        console.log("origin:" + $("#selectAeropuertoDesde").find('option:selected').attr("name"));
-        console.log("destiny:" + $("#selectAeropuertoHasta").find('option:selected').attr("name"));
+        var fecha = formatearFecha($(".swipe-wrap > .active").text());
+        var horaString = formatearHora($(".kitkat-minute").text(), hora);
+        var aeroDesde = $("#selectAeropuertoDesde").find('option:selected').attr("name");
+        var aeroHasta = $("#selectAeropuertoHasta").find('option:selected').attr("name");
+        console.log("date: " + fecha);
+        console.log("hour: " + horaString);
+        console.log("origin:" + aeroDesde);
+        console.log("destiny:" + aeroHasta);
 
         setTimeout(function(){
         $.ajax({
             crossDomain: true,
             type:"GET",
             contentType: "application/json; charset=utf-8",
-            url: apiurl /*+ origin=KORD&destiny=KEWR&date=20160424&hour=2325*/,
+            url: apiurl + "origin=" + aeroDesde + "&destiny=" + aeroHasta + "&date=" + fecha + "&hour=" + hora,
             dataType: "json",
             success: function(data) {
 
