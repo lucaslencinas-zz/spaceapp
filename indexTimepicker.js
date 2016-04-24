@@ -355,20 +355,29 @@ $(function(){
   var hour = ["19","20","21","22","23","00", "01", "02", "03", "04", "05", "06","07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17","18", "19", "20", "21", "22", "23", "00", "01", "02", "03", "04" ];
   var minutes = ["55", "56", "57", "58", "59","00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "00", "01", "02", "03", "04"];
   var html = "";
-  function setup(){
+  /*function setup(){
     for(var i=0; i < 5; i++){
     var day = lastDate.add((i==0)? 0 : 1, 'd');
       html += '<div '+ ((i==0) ? 'class="active"' : ''  )+'><font>' + (day.date()) + '</font><br/>' + day.format('MMM') + '</div>';
     }
+
     $('#DP-date .swipe-wrap').html(html);
 
   }
   setup();
+  */
+  var day = lastDate.add(0, 'd');
+  html += '<div class="active"><font>' + (day.date()) + '</font><br/>' + day.format('MMM') + '</div>';
+  day = lastDate.add(1, 'd');
+  html += '<div><font>' + (day.date()) + '</font><br/>' + day.format('MMM') + '</div>';
+  day = lastDate.add(1, 'd');
+  html += '<div><font>' + (day.date()) + '</font><br/>' + day.format('MMM') + '</div>';
+  day = lastDate.add(1, 'd');
+  html += '<div><font>' + (day.date()) + '</font><br/>' + day.format('MMM') + '</div>';
 
+  $('#DP-date .swipe-wrap').html(html);
 
-
-
-   var mc = new Hammer($('#DP-date').get(0));
+  var mc = new Hammer($('#DP-date').get(0));
   mc.get('pan').set({ direction: Hammer.DIRECTION_HORIZONTAL });
 /*
   mc.on("panleft panright panend", function(ev) {
@@ -390,7 +399,7 @@ $(function(){
     }
 
 });*/
-
+/*
   function MoveLeft(){
     var nxtd = lastDate.add(1, 'd');
     firstDate.add(1, 'd');
@@ -419,6 +428,6 @@ $(function(){
     timer--;
   }
 
-
+*/
 
 })

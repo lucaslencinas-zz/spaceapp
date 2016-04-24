@@ -5,7 +5,7 @@
 * {margin: 0; padding: 0;}
 
 html {
-	height: 120%;
+	height: 100%;
 	/*Image only BG fallback*/
 
 	/*background = gradient + image pattern combo*/
@@ -15,13 +15,13 @@ html {
 
 body {
 	font-family: montserrat, arial, verdana;
-	height: 120%;
+	height: 80%;
 	width: 100%;
 }
 /*form styles*/
 #msform {
 	/* width: 400px;*/
-	margin: 50px auto;
+	margin: 50px auto 0 auto;
 	text-align: center;
 	position: relative;
 }

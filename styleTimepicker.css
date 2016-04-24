@@ -3,10 +3,13 @@
   background-color:#fff;
   overflow:hidden;
   width:280px;
+/*
   float:left;
   left:35%;
+*/
   position:relative;
-  font-family:'Roboto', sans-serif
+  font-family:'Roboto', sans-serif;
+  margin: auto;
 
 }
   .swipe-wrap{
@@ -25,7 +28,7 @@
   text-transform:uppercase;
   cursor: pointer;
   font-size:12px;
-  padding:10px 0
+  padding:5px 0
 }
 
 .swipe-wrap>div.active{
@@ -43,7 +46,7 @@
 .picker-container{
   clear:both;
   /*width:240px;*/
-  padding:20px;
+  padding:5px 0 0 0;
   background-color:#f2f2f2
 }
 .kitkat-container{
