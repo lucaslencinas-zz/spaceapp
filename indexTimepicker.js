@@ -123,7 +123,7 @@
             if (get_set("hourmode"))
                 transition("minute");
         });
-        $(".kitkat-clock-hours").children().each(function(){
+      /*  $(".kitkat-clock-hours").children().each(function(){
             $(this).css({
                 marginTop:$(this).outerHeight()/-2,
                 marginLeft:$(this).outerWidth()/-2
@@ -135,6 +135,7 @@
                 marginLeft:$(this).outerWidth()/-2
             })
         });
+        */
         $(".kitkat-clock-am").on("click", function(){
             get_set("is_am", true);
             $(".kitkat-clock-am").addClass("kitkat-clock-am-pm-active");
@@ -164,8 +165,7 @@
 
         $(".kitkat-clock-cover").on("mousemove mousedown mouseup touchstart touchend touchcancel click touchmove", function(event){
             var use_event;
-            if (event.type=="touchmove" ||
-                event.type=="touchstart"){
+            if (event.type=="touchmove" ||  event.type=="touchstart"){
                 event.offsetX=event.originalEvent.touches[0].pageX;
                 event.offsetY=event.originalEvent.touches[0].pageY;
                 var cur_offset=$(".kitkat-clock-body").offset();
@@ -228,9 +228,8 @@
                         number="0"+number;
                     $(".kitkat-minute").html(number);
                 }
-            } else if ((use_event=="mouseup" ||
-                                    use_event=="click") && get_set("hourmode")){
-                        transition("minute");
+            } else if ((use_event=="mouseup" || use_event=="click") && get_set("hourmode")){
+              transition("minute");
 
             }
 

@@ -95,8 +95,9 @@
         });
 
         $("#search").click(function(){
+          var hora = $(".kitkat-am-pm").text() == "PM" ? 12 + +$(".kitkat-hour").text() : $(".kitkat-hour").text();
           console.log("date: " + formatearFecha($(".swipe-wrap > .active").text()));
-          console.log("hour: " + formatearHora($(".kitkat-minute").text(), $(".kitkat-hour").text()));
+          console.log("hour: " + formatearHora($(".kitkat-minute").text(), hora));
           console.log("origin:" + $("#selectAeropuertoDesde").find('option:selected').attr("name"));
           console.log("destiny:" + $("#selectAeropuertoHasta").find('option:selected').attr("name"));
           $.ajax({
