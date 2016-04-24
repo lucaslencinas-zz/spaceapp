@@ -95,6 +95,7 @@
       $("#insuranceBtn").css("background", "#f44336");
       $("#titleDelay").css ("margin-top", "30px");
 
+/*
       $("#nextAeropuerto").click(function(event){
         var error = false;
         if($("#selectAeropuertoDesde").find('option:selected').attr("name") === "null"){
@@ -108,10 +109,8 @@
         if(error){
           event.stopPropagation();
         }
-
-
       });
-
+*/
 
       $("#search").click(function(){
         var hora = $(".kitkat-am-pm").text() == "PM" ? 12 + +$(".kitkat-hour").text() : $(".kitkat-hour").text();
@@ -124,7 +123,6 @@
         console.log("origin:" + aeroDesde);
         console.log("destiny:" + aeroHasta);
 
-        setTimeout(function(){
         $.ajax({
             crossDomain: true,
             type:"GET",
@@ -138,8 +136,8 @@
               renderResponse(data);
             },
             error: function() { alert('Failed!'); },
-        })} /*end ajax*/
-        , 1500);
+        }); /*end ajax*/
+
       });/*end search click*/
     });
 

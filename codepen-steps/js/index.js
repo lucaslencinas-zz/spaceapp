@@ -5,6 +5,29 @@ var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
 
 $(".next").click(function(){
+
+
+	if($(this).attr("id") == "nextAeropuerto"){
+		var error = false;
+		if($("#selectAeropuertoDesde").find('option:selected').attr("name") === "null"){
+			$("#selectAeropuertoDesde").css("border-color", "red");
+			error = true;
+		}
+		if($("#selectAeropuertoHasta").find('option:selected').attr("name") === "null"){
+			$("#selectAeropuertoHasta").css("border-color", "red");
+			error = true;
+		}
+		if(error){
+			return;
+		}else{
+			$("#selectAeropuertoHasta").css("border-color", "blue");
+			$("#selectAeropuertoDesde").css("border-color", "blue");
+		}
+	}
+
+
+
+
 	if(animating) return false;
 	animating = true;
 
