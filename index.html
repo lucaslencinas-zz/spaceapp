@@ -30,6 +30,7 @@
       <h3 class="fs-subtitle">Enter flight information</h3>
 
       <select id="selectAeropuertoDesde" placeholder="Desde">
+        <option name="null">Select ...</option>
         <option name="KATL">Atlanta</option>
         <option name="KORD">Chicago</option>
         <option name="KLGA">LaGuardia</option>
@@ -39,6 +40,7 @@
         <option name="KSFO">San Francisco</option>
       </select>
       <select id="selectAeropuertoHasta" placeholder="Hasta">
+        <option name="null">Select ...</option>
         <option name="KATL">Atlanta</option>
         <option name="KORD">Chicago</option>
         <option name="KLGA">LaGuardia</option>
@@ -90,7 +92,7 @@
         $( this ).toggleClass( "active" );
       });
 
-      $("#selectAeropuertoHasta option[name='KORD']").prop('selected', true);
+      /*$("#selectAeropuertoHasta option[name='KORD']").prop('selected', true);*/
       $("#insuranceBtn").css ("width", "110px");
       $("#insuranceBtn").css("background", "#f44336");
       $("#titleDelay").css ("margin-top", "30px");
