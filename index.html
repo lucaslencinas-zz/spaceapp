@@ -129,7 +129,9 @@
             crossDomain: true,
             type:"GET",
             contentType: "application/json; charset=utf-8",
-            url: apiurl + "origin=" + aeroDesde + "&destiny=" + aeroHasta + "&date=" + fecha + "&hour=" + horaString,
+            beforeSend: function (request) {
+                request.setRequestHeader("Access-Control-Allow-Origin", "http://lucaslencinas.github.io");
+            }, url: apiurl + "origin=" + aeroDesde + "&destiny=" + aeroHasta + "&date=" + fecha + "&hour=" + horaString,
             dataType: "json",
             success: function(data) {
 
