@@ -400,6 +400,12 @@ section h3.section-subheading {
   height: 100%;
 }
 
+@media (max-width:800px) {
+  .timeline .timeline-heading h4.subheading {
+      margin-top: 0;
+  }
+}
+
 @media (min-width:768px) {
     .timeline:before {
         left: 50%
