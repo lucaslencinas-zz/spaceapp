@@ -3,23 +3,38 @@
 var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
-
+var airportErrors;
 $(".next").click(function(){
 
 
 	if($(this).attr("id") == "nextAeropuerto"){
 		var error = false;
-		if($("#selectAeropuertoDesde").find('option:selected').attr("name") === "null"){
+		var msgError = "";
+		var desde = $("#selectAeropuertoDesde").find('option:selected').attr("name");
+		var hasta = $("#selectAeropuertoHasta").find('option:selected').attr("name");
+
+		if(desde  == "null"){
 			$("#selectAeropuertoDesde").css("border-color", "red");
 			error = true;
+			msgError += "Please enter your takeoff ";
 		}
-		if($("#selectAeropuertoHasta").find('option:selected').attr("name") === "null"){
+		if( hasta == "null"){
 			$("#selectAeropuertoHasta").css("border-color", "red");
 			error = true;
+			msgError += (msgError.length == 0? "Please enter your takeoff " : "and your landing ");
 		}
+		msgError += "Airport.";
+
 		if(error){
-			return;
+				$("#msgError").html(msgError).show();
+				return;
 		}else{
+			if(hasta == desde){
+				msgError = "Please choose different airport for your flight.";
+				$("#msgError").html(msgError).show();
+				return;
+			}
+			$("#msgError").html(msgError).hide();
 			$("#selectAeropuertoHasta").css("border-color", "blue");
 			$("#selectAeropuertoDesde").css("border-color", "blue");
 		}

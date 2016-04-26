@@ -46,6 +46,7 @@
         <option name="KSFO">San Francisco</option>
       </select>
       <!--<input type="button" name="previous" class="previous action-button" value="Previous" />-->
+      <div class="fs-subtitle" id="msgError" style="display: none; color: red"></div>
       <input type="button" name="next" id="nextAeropuerto" class="next action-button" value="Next" />
     </fieldset>
     <fieldset>
@@ -79,38 +80,20 @@
   <script src="codepen-steps/js/index.js"></script>
   <script src="indexTimepicker.js"></script>
   <script type="text/javascript">
+
     var probabilidad = ["UNLIKELY", "LOW", "MEDIUM", "HIGH", "VERY HIGH"];
-    /*var apiurl = "http://private-e158e-clearfortakeoff.apiary-mock.com/probability"*/
     var apiurl = "http://prudi.mybluemix.net/api/v1/weathers/probability?";
-    /*origin=KORD&destiny=KEWR&date=20160424&hour=2325*/
     var meses = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dic"];
     $(function() {
+
       $(".swipe-wrap > div").click(function(){
         $(".swipe-wrap > .active").toggleClass("active");
         $( this ).toggleClass( "active" );
       });
 
-      /*$("#selectAeropuertoHasta option[name='KORD']").prop('selected', true);*/
       $("#insuranceBtn").css ("width", "110px");
       $("#insuranceBtn").css("background", "#f44336");
       $("#titleDelay").css ("margin-top", "30px");
-
-/*
-      $("#nextAeropuerto").click(function(event){
-        var error = false;
-        if($("#selectAeropuertoDesde").find('option:selected').attr("name") === "null"){
-          $("#selectAeropuertoDesde").css("border-color", "red");
-          error = true;
-        }
-        if($("#selectAeropuertoHasta").find('option:selected').attr("name") === "null"){
-          $("#selectAeropuertoHasta").css("border-color", "red");
-          error = true;
-        }
-        if(error){
-          event.stopPropagation();
-        }
-      });
-*/
 
       $("#search").click(function(){
         var hora = $(".kitkat-am-pm").text() == "PM" ? 12 + +$(".kitkat-hour").text() : $(".kitkat-hour").text();
@@ -139,6 +122,7 @@
         }); /*end ajax*/
 
       });/*end search click*/
+
     });
 
     function formatearFecha(fechaForm){
@@ -183,10 +167,16 @@
     }
 
     $( "#selectAeropuertoDesde" ).change(function () {
-
+      $("#msgError").html(msgError).hide();
+      $("#selectAeropuertoHasta").css("border-color", "blue");
+      $("#selectAeropuertoDesde").css("border-color", "blue");
     });
-    /*http://localhost:3000/api/v1/weathers/probability?origin=KPHL&destiny=KOKC&date=20160424&hour=2400*/
-    /*http://prudi.mybluemix.net/api/v1/weathers/probability?origin=KORD&destiny=KEWR&date=20160424&hour=2325*/
+
+    $( "#selectAeropuertoDesde" ).change(function () {
+      $("#msgError").html(msgError).hide();
+      $("#selectAeropuertoHasta").css("border-color", "blue");
+      $("#selectAeropuertoDesde").css("border-color", "blue");
+    });
 
   </script>
 </body>
