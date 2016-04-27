@@ -161,7 +161,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 header {
-    background-image: url(../img/waiting.jpg);
+    background-image: url(../img/waiting-p.jpg);
     background-repeat: none;
     background-attachment: scroll;
     background-position: center center;
@@ -170,6 +170,7 @@ header {
     background-size: cover;
     -o-background-size: cover;
     text-align: center;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.6);
 }
 header .intro-text {
     padding-top: 100px;
@@ -687,4 +688,28 @@ body {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+}
+
+/* Callout2 */
+
+.callout2 {
+    display: table;
+    width: 100%;
+    height: 200px;
+    color: #fff;
+    background: rgb(70, 70, 70) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.text-vertical-center {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.callout2 a, h2, button, h4,  .navbar-right a{
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
 }
