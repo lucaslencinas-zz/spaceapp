@@ -32,7 +32,7 @@
       <h3 class="fs-subtitle">Enter flight information</h3>
 
       <select id="selectAeropuertoDesde" placeholder="Desde">
-        <option name="null">Select ...</option>
+        <option name="null">Select departing...</option>
         <option name="KATL">Atlanta</option>
         <option name="KORD">Chicago</option>
         <option name="KJFK">New York</option>
@@ -40,7 +40,7 @@
         <option name="KSFO">San Francisco</option>
       </select>
       <select id="selectAeropuertoHasta" placeholder="Hasta">
-        <option name="null">Select ...</option>
+        <option name="null">Select arrival...</option>
         <option name="KATL">Atlanta</option>
         <option name="KORD">Chicago</option>
         <option name="KJFK">New York</option>
@@ -56,9 +56,9 @@
       <h3 class="fs-subtitle">Select the time of your flight</h3>
       <!-- Time Picker -->
     <div class="swipe" id="DP-date">
-        <div class='swipe-wrap'>
-        </div>
+      <div class='swipe-wrap'>
       </div>
+    </div>
     <div class="picker-container">
     </div>
     <!-- Fin Time Picker  -->
@@ -99,29 +99,25 @@
       $("#titleDelay").css ("margin-top", "30px");
 
       $("#search").click(function(){
-        var hora = $(".kitkat-am-pm").text() == "PM" ? 12 + +$(".kitkat-hour").text() : $(".kitkat-hour").text();
+        var hora = $(".kitkat-am-pm").text() == "PM" ? 12 + +$(".kitkat-hour").text() : $(".kitkat-hour").text() % 12;
         var fecha = formatearFecha($(".swipe-wrap > .active").text());
         var horaString = formatearHora($(".kitkat-minute").text(), hora);
         var aeroDesde = $("#selectAeropuertoDesde").find('option:selected').attr("name");
         var aeroHasta = $("#selectAeropuertoHasta").find('option:selected').attr("name");
-        console.log("date: " + fecha);
-        console.log("hour: " + horaString);
-        console.log("origin:" + aeroDesde);
-        console.log("destiny:" + aeroHasta);
+        var offset = new Date().getTimezoneOffset();
 
         $.ajax({
             crossDomain: true,
             type:"GET",
             contentType: "application/json; charset=utf-8",
-            beforeSend: function (request) {
-                request.setRequestHeader("Access-Control-Allow-Origin", "http://lucaslencinas.github.io");
-            }, url: apiurl + "origin=" + aeroDesde + "&destiny=" + aeroHasta + "&date=" + fecha + "&hour=" + horaString,
+            url: apiurl + "origin=" + aeroDesde + "&destiny=" + aeroHasta + "&date=" + fecha + "&hour=" + horaString + "&offset=" + offset,
             dataType: "json",
             success: function(data) {
-
               renderResponse(data);
             },
-            error: function() { alert('Failed!'); },
+            error: function(data) {
+              alert(data.responseJSON['error']);
+            }
         }); /*end ajax*/
 
       });/*end search click*/
