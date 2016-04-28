@@ -175,3 +175,7 @@ h4 fs-title{
   margin-bottom: 3px;
   color: #666;
 }
+
+#insuranceBtn:hover {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #F44336 !important;
+}
