@@ -30,6 +30,20 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     font-weight: 700
 }
+
+.btn-high{
+  color: #fff;
+  /*background-color: #fed136;*/
+  border-color: #fed136;
+  font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 15px 15px;
+  margin: 0 5px;
+}
+
 .img-centered {
     margin: 0 auto
 }
@@ -118,8 +132,11 @@ h1, h2, h3, h4, h5, h6 {
     font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-transform: uppercase;
     font-weight: 400;
-    letter-spacing: 1px;
+    /*letter-spacing: 1px;*/
     color: #fff;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 3px 3px;
 }
 .navbar-default .nav li a:hover, .navbar-default .nav li a:focus {
     color: #fed136;
@@ -708,4 +725,8 @@ body {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
+}
+
+.callout2 a, h2, button, h4,  .navbar-right a{
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
 }
