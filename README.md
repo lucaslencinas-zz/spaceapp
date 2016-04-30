@@ -1,144 +1,45 @@
-# spaceapp
+# GOT a Flight
 Clear for Take Off Project - Nasa Space App 2016
 
+The potential and complexity of the solution is that the prediction is not based on old statistics, but it is based on the future and current forecasts combined with aviation reports and multiple factors that influence the weather-related delays, such as the position of the runways at the airport, the number of runways, the aircraft specifications, the conditions for emergency landings at the departure airport and the International Aviation Standards and Regulations. This information is public; the key point is to combine the correct factors and to generate the most precise rules.
 
-Ejemplo de datos de una API:
+In addition, GOT a Flight introduces the new concept of “insurance” in the aviation sector by offering flight insurance policies to cover extra expenses incurred due to the delay. As part of the project, we also present a roadmap with additional features aimed to improve the accuracy of the prediction.
 
-data: Object
-currently: Object
-apparentTemperature: 56.04
-cloudCover: 0.66
-dewPoint: 47.78
-humidity: 0.74
-icon: "partly-cloudy-night"
-nearestStormBearing: 219
-nearestStormDistance: 3
-ozone: 356.21
-precipIntensity: 0
-precipProbability: 0
-pressure: 1016.99
-summary: "Mostly Cloudy"
-temperature: 56.04
-time: 1461382256
-visibility: 8.43
-windBearing: 281
-windSpeed: 10.71
-__proto__: Object
-daily: Object
-data: Array[8]
-0: Object
-apparentTemperatureMax: 59.38
-apparentTemperatureMaxTime: 1461304800
-apparentTemperatureMin: 55.13
-apparentTemperatureMinTime: 1461391200
-cloudCover: 0.6
-dewPoint: 50.97
-humidity: 0.78
-icon: "rain"
-moonPhase: 0.52
-ozone: 369.25
-precipIntensity: 0.0186
-precipIntensityMax: 0.0494
-precipIntensityMaxTime: 1461337200
-precipProbability: 0.71
-precipType: "rain"
-pressure: 1012.73
-summary: "Light rain until evening."
-sunriseTime: 1461331516
-sunsetTime: 1461379985
-temperatureMax: 59.38
-temperatureMaxTime: 1461304800
-temperatureMin: 55.13
-temperatureMinTime: 1461391200
-time: 1461308400
-visibility: 8.25
-windBearing: 243
-windSpeed: 10.61
-__proto__: Object
-1: Object
-2: Object
-3: Object
-4: Object
-5: Object
-6: Object
-7: Object
-length: 8
-__proto__: Array[0]
-icon: "rain"
-summary: "Light rain today through Thursday, with temperatures rising to 71°F on Tuesday."
-__proto__: Object
-flags: Object
-darksky-stations: Array[1]
-0: "KMUX"
-length: 1
-__proto__: Array[0]
-isd-stations: Array[5]
-0: "724943-99999"
-1: "745039-99999"
-2: "745065-99999"
-3: "994016-99999"
-4: "998479-99999"
-length: 5
-__proto__: Array[0]
-lamp-stations: Array[9]
-0: "KAPC"
-1: "KCCR"
-2: "KHWD"
-3: "KLVK"
-4: "KNUQ"
-5: "KOAK"
-6: "KPAO"
-7: "KSFO"
-8: "KSQL"
-length: 9
-__proto__: Array[0]
-madis-stations: Array[16]
-sources: Array[13]
-0: "darksky"
-1: "lamp"
-2: "gfs"
-3: "cmc"
-4: "nam"
-5: "rap"
-6: "rtma"
-7: "sref"
-8: "fnmoc"
-9: "isd"
-10: "nwspa"
-11: "madis"
-12: "nearest-precip"
-  length: 13
-  __proto__: Array[0]
-  units: "us"
-  __proto__: Object
-  hourly: Object
-  data: Array[49]
-  0: Object
-  apparentTemperature: 56.16
-  cloudCover: 0.68
-  dewPoint: 47.52
-  humidity: 0.73
-  icon: "partly-cloudy-night"
-  ozone: 358.97
-  precipIntensity: 0.0011
-  precipProbability: 0.01
-  precipType: "rain"
-  pressure: 1016.55
-  summary: "Mostly Cloudy"
-  temperature: 56.16
-  time: 1461380400
-  visibility: 8.54
-  windBearing: 280
-  windSpeed: 11.15
+### Proposed Solution
 
-1: Object
+The complex work of predicting a flight delay was resolved by merging data from diverse sources: weather conditions, aircraft specs, airport design and International Standards and Regulations.
 
-....
-60: Object
-length: 61
-__proto__: Array[0]
-icon: "rain"
-summary: "Drizzle starting in 10 min., stopping 5 min. later."
-__proto__: Object
-offset: -7
-timezone: "America/Los_Angeles"
+The result is an application that predicts the probability of a flight being delayed because of the weather conditions. Moreover, it offers the possibility to take out an insurance policy to cover the expenditures incurred due to the delay, thus proposing an innovative business model to the aviation market. According to the FAA, the airports that have the worst weather-related delays in USA are New York (3), Chicago, Philadelphia, San Francisco and Atlanta. In order to address this scenario, GOT a Flight has been implemented for those airports to address those 120,000 weather delays.
+
+
+How the prediction works GOT a Flight predicts the weather conditions by analyzing parameters within different categories and by combining all the variables involved in a flight delay:
+
+- Aircraft specifications: Aircraft specs are one of the most important factors when it comes to defining minima or limitations. For example, the range of acceptable crosswinds, the certification to operate in icy conditions operations and runway limitations are all parameters given by the manufacturer. This means the delays will depend on the aircraft and that is one of the most difficult challenges of building the application.
+
+- International Aviation Standards and Regulations: FAA and NOAA dispositions and Manual of All-Weather Operations, DOC 9365, from the International Civil Aviation Organization (ICAO).
+
+- Weather forecast and pre-flight reports: The application combines long term forecasts taken from forcaset.io and aviation reports from the National Oceanic and Atmospheric Administration (NOAA) and the Aviation Weather Center (AWC), which are used by pilots to plan the flights. These aviation reports include METAR, TAF, SIGMET and AIRMET, and the variables are temperature, wind speed and direction, humidity, precipitations, visibility and ceiling.
+
+- The position of the runways in the airport and crosswind: The orientation is needed to calculate the crosswind, the orthogonal component of the wind toward the runway. I.e., if the orthogonal component is higher than 34 knots, then the conditions are not good for the aircraft to take off. The maximum crosswind component is limited by the aircraft model and is given by the manufacturer. It is common for airports and/or airlines to have their own limitations, lowering this maximum. There might even be more limitations if there’s reduced visibility or low ceiling. In this case, the range of acceptable crosswind was taken from one of the Boeing 737 specifications document.
+
+Visibility: Even if the international and national standards and regulations allow take-off and landing with almost no visibility and ceilings as low as 200ft, the delays start as soon as the pilot needs to take off or land with IFR. What’s more, in the most crowded airports delays could start with MVFR procedures. The limits of each type of flight can be found in NOAA’s documents.
+
+- Icy conditions: Most of the commercial aircraft are certificated to fly up to moderately icy conditions, but is highly recommendable to avoid flying in severe icing conditions. Even if the plane can take-off in such conditions, it is plausible that after a long taxing, the aircraft might be de-iced, resulting in delays.
+
+- Ceiling: The thickness and height of clouds covering the sky, within the limits of the different flight categories: Visual Flight Rules (VFR), Marginal Visual Flight rules (MVFR), Instrument Flight Rules (IFR) and Low Instrument Flight Rules (LIFR).
+
+- The number of runways available in the airport: If any of the runways cannot be used because of the weather conditions, then the same number of departures and arrivals has to be distributed between the remaining number of available runways. This situation will also generate a delay.
+
+- Departure and arriving airports: The departure of an aircraft could be delayed by weather conditions at the departure airport, but it could also be delayed due to the bad conditions at the arriving airport. There are regulations that have to be met at both the departure and the arriving airports.
+
+- Emergency landing at the departure airport: For flight initiation, departure weather minima at an airport should not be less than the applicable minima for landing at that airport unless a suitable take-off alternate aerodrome is available.
+
+### Improvements (coming soon...)
+
+- Implement Supervised machine learning techniques to gain even more accuracy upon each delayed flight predicted. Currently the application is hosted in IBM Bluemix, so a potential candidate could be the Watson service.
+- Add more forecast sources and validate estimates: detect if the weather prediction of a particular source is not reliable at a particular time.
+- Include historical statistics and compare them with each prediction to test the results and adjust the estimate if found beneficial.
+- Check and analyze non-weather data to cover more delay factors, apart from weather conditions.
+- Load more aircraft models and airports with the corresponding specifications.
+- Insert the flight number instead of the itinerary.
+
