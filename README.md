@@ -1,7 +1,7 @@
 ## [GOT a Flight](http://www.delay.ml/) - [Live demo](http://www.delay.ml/demo/)
 > ***Flight delay prediction system*** - Solution to the aeronautic Challenge from NASA Space Apps Challenge 2016 Clear for Take Off. It was developed in less than 48hs.
 
-> The server source code is at [this repository](https://github.com/francoprud/clear-for-take-off)
+> The server source code in at [this repository](https://github.com/francoprud/clear-for-take-off)
 
 ### Collaborators
 
